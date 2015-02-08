@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity(name = "store")
 @SequenceGenerator(name = "seq_store", sequenceName = "seq_store", initialValue = 1000)
-public class Store implements PMEntity {
+public class Store implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_store")
@@ -21,10 +21,8 @@ public class Store implements PMEntity {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @ManyToMany
-    @JoinTable(name = "store_product", joinColumns = {@JoinColumn(name = "store_id", referencedColumnName = "id")}
-            ,inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
-    private List<Product> productList;
+    @OneToMany(mappedBy = "id.store", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<StoreProduct> productList;
 
     public Long getId() {
         return id;
@@ -50,11 +48,11 @@ public class Store implements PMEntity {
         this.address = address;
     }
 
-    public List<Product> getProductList() {
+    public List<StoreProduct> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
+    public void setProductList(List<StoreProduct> productList) {
         this.productList = productList;
     }
 }
