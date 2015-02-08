@@ -5,6 +5,8 @@ import br.com.manager.services.IProductService;
 
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @ManagedBean(name = "productBean")
 public class ProductBean {
@@ -14,7 +16,8 @@ public class ProductBean {
 
     public String getLabel() {
         Product product = new Product();
-        product.setName(Double.toString(Math.random()));
+        product.setName("Product " + Double.toString((int) (Math.round(Math.random() * 100))));
+        product.setValue(BigDecimal.valueOf(Math.random() * 1000).setScale(2, RoundingMode.DOWN));
 
         productService.insert(product);
 

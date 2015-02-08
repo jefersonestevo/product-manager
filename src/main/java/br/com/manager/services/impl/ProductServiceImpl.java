@@ -19,8 +19,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> listAll(ProductFilter productFilter) {
-        // TODO
-        return null;
+        return productRepository.listAll(productFilter);
     }
 
     @Override

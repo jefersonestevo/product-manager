@@ -24,8 +24,8 @@ public abstract class BaseDAOJPA<ENT extends BaseEntity<ID>, ID> {
     }
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-    public List<ENT> findList() throws ProductManagerException {
-        return getTemplate().findList(getEntityClass());
+    public List<ENT> list() throws ProductManagerException {
+        return getTemplate().list(getEntityClass());
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)

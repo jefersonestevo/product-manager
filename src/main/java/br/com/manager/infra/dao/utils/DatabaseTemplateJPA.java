@@ -115,7 +115,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-    public <E extends BaseEntity<ID>, ID> List<E> findList(Class<E> entity)
+    public <E extends BaseEntity<ID>, ID> List<E> list(Class<E> entity)
             throws ProductManagerException {
         try {
             CriteriaQuery<E> crit = this.createCriteria(entity);
