@@ -12,6 +12,7 @@ import java.util.List;
 
 @Named
 public class ProductRepositoryJPA extends BaseDAOJPA<Product, Long> implements IProductRepository {
+
     @Override
     protected Class<Product> getEntityClass() {
         return Product.class;
@@ -31,6 +32,8 @@ public class ProductRepositoryJPA extends BaseDAOJPA<Product, Long> implements I
                 params.add("%" + productFilter.getName() + "%");
             }
         }
+
+        query.append(" ORDER BY p.name ");
 
         return getTemplate().findByQueryWithParameters(getEntityClass(), query.toString(), params.toArray());
     }
