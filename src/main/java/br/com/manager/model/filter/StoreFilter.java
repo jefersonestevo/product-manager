@@ -1,4 +1,4 @@
-package br.com.manager.services.filter;
+package br.com.manager.model.filter;
 
 import java.io.Serializable;
 

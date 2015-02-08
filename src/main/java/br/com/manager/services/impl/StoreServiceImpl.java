@@ -2,14 +2,13 @@ package br.com.manager.services.impl;
 
 import br.com.manager.infra.dao.IStoreRepository;
 import br.com.manager.model.entity.Store;
+import br.com.manager.model.filter.StoreFilter;
 import br.com.manager.services.IStoreService;
-import br.com.manager.services.filter.StoreFilter;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
 @Stateless

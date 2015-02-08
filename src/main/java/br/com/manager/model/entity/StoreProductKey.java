@@ -1,6 +1,8 @@
 package br.com.manager.model.entity;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Embeddable

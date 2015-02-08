@@ -3,13 +3,7 @@ package br.com.manager.infra.dao.utils;
 import br.com.manager.infra.exception.ExceptionCode;
 import br.com.manager.infra.exception.ProductManagerDatabaseException;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.PersistenceException;
-import javax.persistence.QueryTimeoutException;
-import javax.validation.ConstraintViolation;
+import javax.persistence.*;
 import javax.validation.ConstraintViolationException;
 
 public class JPAExceptionTranslator {

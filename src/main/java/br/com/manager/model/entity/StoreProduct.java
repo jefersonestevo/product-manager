@@ -1,6 +1,8 @@
 package br.com.manager.model.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "store_product")

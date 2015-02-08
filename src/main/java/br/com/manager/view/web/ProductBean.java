@@ -1,13 +1,10 @@
-package br.com.manager.web;
+package br.com.manager.view.web;
 
-import br.com.manager.infra.dao.utils.DatabaseTemplateJPA;
 import br.com.manager.model.entity.Product;
 import br.com.manager.services.IProductService;
 
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @ManagedBean(name = "productBean")
 public class ProductBean {

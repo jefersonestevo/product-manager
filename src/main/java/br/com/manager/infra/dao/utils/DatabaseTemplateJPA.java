@@ -3,9 +3,6 @@ package br.com.manager.infra.dao.utils;
 import br.com.manager.infra.exception.ProductManagerException;
 import br.com.manager.model.entity.BaseEntity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,8 +11,10 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
-@Named ("template_jpa")
+@Named("template_jpa")
 public class DatabaseTemplateJPA {
 
     @PersistenceContext
@@ -30,7 +29,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> E update(E entity) throws ProductManagerException {
+    public <E extends BaseEntity<ID>, ID> E update(E entity) throws ProductManagerException {
         try {
             entity = getEntityManager().merge(entity);
             getEntityManager().flush();
@@ -40,7 +39,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> List<E> updateList(List<E> entityList)
+    public <E extends BaseEntity<ID>, ID> List<E> updateList(List<E> entityList)
             throws ProductManagerException {
         try {
             List<E> updatedEntities = new ArrayList<E>();
@@ -59,7 +58,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> void remove(E entity) throws ProductManagerException {
+    public <E extends BaseEntity<ID>, ID> void remove(E entity) throws ProductManagerException {
         try {
             E entityRemocao = getEntityManager().merge(entity);
             getEntityManager().remove(entityRemocao);
@@ -69,7 +68,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> void removeList(List<E> entityList)
+    public <E extends BaseEntity<ID>, ID> void removeList(List<E> entityList)
             throws ProductManagerException {
         try {
             for (E entity : entityList) {
@@ -82,7 +81,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> E find(Class<E> entity, ID id) throws ProductManagerException {
+    public <E extends BaseEntity<ID>, ID> E find(Class<E> entity, ID id) throws ProductManagerException {
         try {
             return getEntityManager().find(entity, id);
         } catch (RuntimeException e) {
@@ -90,7 +89,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> List<E> findByQuery(Class<E> entityClass, String query)
+    public <E extends BaseEntity<ID>, ID> List<E> findByQuery(Class<E> entityClass, String query)
             throws ProductManagerException {
         try {
             return getEntityManager().createQuery(query, entityClass)
@@ -101,8 +100,8 @@ public class DatabaseTemplateJPA {
     }
 
     @SuppressWarnings("unchecked")
-     public <E extends BaseEntity<ID>, ID> List<E> findByQueryWithParameters(Class<E> entityClass, String queryStr,
-                                  Object[] params) throws ProductManagerException {
+    public <E extends BaseEntity<ID>, ID> List<E> findByQueryWithParameters(Class<E> entityClass, String queryStr,
+                                                                            Object[] params) throws ProductManagerException {
         try {
             Query query = getEntityManager().createQuery(queryStr,
                     entityClass);
@@ -116,7 +115,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> List<E> findList(Class<E> entity)
+    public <E extends BaseEntity<ID>, ID> List<E> findList(Class<E> entity)
             throws ProductManagerException {
         try {
             CriteriaQuery<E> crit = this.createCriteria(entity);
@@ -128,7 +127,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-     public <E extends BaseEntity<ID>, ID> List<E> findByExample(Class<E> entity, List<ID> listaIds)
+    public <E extends BaseEntity<ID>, ID> List<E> findByExample(Class<E> entity, List<ID> listaIds)
             throws ProductManagerException {
         try {
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();

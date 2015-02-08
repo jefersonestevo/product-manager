@@ -1,7 +1,7 @@
 package br.com.manager.services;
 
 import br.com.manager.model.entity.Product;
-import br.com.manager.services.filter.ProductFilter;
+import br.com.manager.model.filter.ProductFilter;
 
 import java.util.List;
 

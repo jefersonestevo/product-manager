@@ -14,6 +14,6 @@ public class ProductManagerException extends RuntimeException {
 
     @Override
     public String toString() {
-        return this.getClass()+">>code="+getCode()+"\n"+super.toString();
+        return this.getClass() + ">>code=" + getCode() + "\n" + super.toString();
     }
 }
