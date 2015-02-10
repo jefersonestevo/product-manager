@@ -127,7 +127,7 @@ public class DatabaseTemplateJPA {
         }
     }
 
-    public <E extends BaseEntity<ID>, ID> List<E> findByExample(Class<E> entity, List<ID> listaIds)
+    public <E extends BaseEntity<ID>, ID> List<E> listByIds(Class<E> entity, List<ID> listaIds)
             throws ProductManagerException {
         try {
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();

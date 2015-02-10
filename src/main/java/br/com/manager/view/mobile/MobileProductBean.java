@@ -3,11 +3,11 @@ package br.com.manager.view.mobile;
 import br.com.manager.model.entity.Product;
 import br.com.manager.services.IProductService;
 
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
-@ManagedBean(name = "mobileProductBean")
+@Named("mobileProductBean")
 public class MobileProductBean {
 
     private List<Product> productList;

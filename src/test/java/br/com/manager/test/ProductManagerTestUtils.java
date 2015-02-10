@@ -48,6 +48,7 @@ public class ProductManagerTestUtils {
         addPackage(archive, ProductManagerException.class.getPackage());
         addPackage(archive, IProductRepository.class.getPackage());
         addPackage(archive, ProductFilter.class.getPackage());
+        addClass(archive, AbstractUnitTest.class);
     }
 
     public static void addClass(Archive<?> archive, Class<?> classe) {
