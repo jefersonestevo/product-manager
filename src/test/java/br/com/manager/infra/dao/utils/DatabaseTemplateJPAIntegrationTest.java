@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.persistence.ShouldMatchDataSet;
-import org.jboss.arquillian.persistence.Transactional;
 import org.jboss.arquillian.persistence.UsingDataSet;
+import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Ignore;
@@ -66,25 +66,32 @@ public class DatabaseTemplateJPAIntegrationTest {
 
     @Test
     @UsingDataSet("dataset/product_simple.xml")
+    @ShouldMatchDataSet("dataset/empty.xml")
     public void testRemove() throws Exception {
         templateJPA.remove(this.createEntity(1l, null, null));
-
-        List<Product> deletedProducts = templateJPA.list(Product.class);
-        assertEquals("The products were not removed", 0, deletedProducts.size());
     }
 
     @Test
     @UsingDataSet("dataset/product_list.xml")
+    @ShouldMatchDataSet("dataset/product_simple.xml")
     public void testRemoveList() throws Exception {
+        List<BaseEntity<Long>> listToBeRemoved = new ArrayList<>();
+        listToBeRemoved.add(this.createEntity(2l, null, null));
+        listToBeRemoved.add(this.createEntity(3l, null, null));
+
+        templateJPA.removeList(listToBeRemoved);
+    }
+
+    @Test
+    @UsingDataSet("dataset/product_list.xml")
+    @ShouldMatchDataSet("dataset/empty.xml")
+    public void testRemoveList_RemovingAllItems() throws Exception {
         List<BaseEntity<Long>> listToBeRemoved = new ArrayList<>();
         listToBeRemoved.add(this.createEntity(1l, null, null));
         listToBeRemoved.add(this.createEntity(2l, null, null));
         listToBeRemoved.add(this.createEntity(3l, null, null));
 
         templateJPA.removeList(listToBeRemoved);
-
-        List<Product> deletedProducts = templateJPA.list(Product.class);
-        assertEquals("Não foi removido o produto", 0, deletedProducts.size());
     }
 
     @Test

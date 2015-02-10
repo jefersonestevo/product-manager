@@ -13,7 +13,7 @@
                 -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n -Djboss.http.port=8888
                 -Djboss.service.binding.set=ports-01
             </property>
-            <property name="jbossHome">target/wildfly-8.1.0.Final</property>
+            <property name="jbossHome">target/wildfly-8.2.0.Final</property>
             <property name="allowConnectingToRunningServer">true</property>
 
         </configuration>

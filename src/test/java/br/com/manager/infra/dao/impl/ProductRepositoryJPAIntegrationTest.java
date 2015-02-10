@@ -7,8 +7,8 @@ import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.persistence.Transactional;
 import org.jboss.arquillian.persistence.UsingDataSet;
+import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
@@ -46,7 +46,7 @@ public class ProductRepositoryJPAIntegrationTest {
 
     @Test
     @UsingDataSet("dataset/product_list.xml")
-    public void testListAllOrdered() throws Exception {
+    public void testListAll_ShouldReturnOrdered() throws Exception {
         List<Product> products = productRepository.listAll(null);
         assertEquals("Nao foi retornada a quantidade de itens existentes", 3, products.size());
         for (int i = 1; i <= 3; i++) {

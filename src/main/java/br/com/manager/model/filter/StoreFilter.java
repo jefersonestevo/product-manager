@@ -2,6 +2,8 @@ package br.com.manager.model.filter;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+
 public class StoreFilter implements Serializable {
     private String name;
     private String street;
@@ -28,5 +30,10 @@ public class StoreFilter implements Serializable {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }
