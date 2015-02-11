@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity(name = "product")
 @SequenceGenerator(name = "seq_product", sequenceName = "seq_product", initialValue = 1000)
-public class Product implements BaseEntity<Long> {
+public class Product extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_product")

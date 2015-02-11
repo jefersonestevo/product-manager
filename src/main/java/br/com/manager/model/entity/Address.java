@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 @Entity(name = "address")
 @SequenceGenerator(name = "seq_adress", sequenceName = "seq_adress", initialValue = 1000)
-public class Address implements BaseEntity<Long> {
+public class Address extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_adress")

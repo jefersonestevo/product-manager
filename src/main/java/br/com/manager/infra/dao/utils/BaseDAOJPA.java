@@ -1,10 +1,12 @@
 package br.com.manager.infra.dao.utils;
 
 import br.com.manager.infra.exception.ProductManagerException;
+import br.com.manager.infra.extensions.Logged;
 import br.com.manager.model.entity.BaseEntity;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,10 +15,9 @@ import java.util.List;
 
 public abstract class BaseDAOJPA<ENT extends BaseEntity<ID>, ID> {
 
-    @Inject
-    private DatabaseTemplateJPA template;
-
     protected abstract Class<ENT> getEntityClass();
+
+    protected abstract DatabaseTemplateJPA getTemplate();
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public ENT find(ID id) throws ProductManagerException {
@@ -46,11 +47,4 @@ public abstract class BaseDAOJPA<ENT extends BaseEntity<ID>, ID> {
         return getTemplate().getEntityManager().createQuery(cq);
     }
 
-    protected DatabaseTemplateJPA getTemplate() {
-        return template;
-    }
-
-    protected void setTemplate(DatabaseTemplateJPA template) {
-        this.template = template;
-    }
 }

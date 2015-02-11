@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity(name = "store")
 @SequenceGenerator(name = "seq_store", sequenceName = "seq_store", initialValue = 1000)
-public class Store implements BaseEntity<Long> {
+public class Store extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_store")

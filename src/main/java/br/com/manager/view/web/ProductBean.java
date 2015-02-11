@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 @Named("productBean")
 public class ProductBean {
@@ -20,6 +21,8 @@ public class ProductBean {
         product.setValue(BigDecimal.valueOf(Math.random() * 1000).setScale(2, RoundingMode.DOWN));
 
         productService.insert(product);
+
+        productService.listAll(null);
 
         return "Product Manager App Test";
     }

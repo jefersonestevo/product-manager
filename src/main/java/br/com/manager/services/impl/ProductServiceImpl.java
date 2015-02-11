@@ -1,6 +1,7 @@
 package br.com.manager.services.impl;
 
 import br.com.manager.infra.dao.IProductRepository;
+import br.com.manager.infra.extensions.Logged;
 import br.com.manager.model.entity.Product;
 import br.com.manager.model.filter.ProductFilter;
 import br.com.manager.services.IProductService;
@@ -11,6 +12,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import java.util.List;
 
+@Logged
 @Stateless
 public class ProductServiceImpl implements IProductService {
 

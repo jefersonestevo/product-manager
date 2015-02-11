@@ -1,9 +1,15 @@
 package br.com.manager.model.entity;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+
 import java.io.Serializable;
 
-public interface BaseEntity<ID> extends Serializable {
+public abstract class BaseEntity<ID> implements Serializable {
 
-    public ID getId();
+    public abstract ID getId();
 
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
+    }
 }

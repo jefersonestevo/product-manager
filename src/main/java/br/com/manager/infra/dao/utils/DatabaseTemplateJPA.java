@@ -1,6 +1,7 @@
 package br.com.manager.infra.dao.utils;
 
 import br.com.manager.infra.exception.ProductManagerException;
+import br.com.manager.infra.extensions.Logged;
 import br.com.manager.model.entity.BaseEntity;
 
 import javax.inject.Named;
@@ -14,6 +15,7 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
+@Logged
 @Named("template_jpa")
 public class DatabaseTemplateJPA {
 

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "store_product")
-public class StoreProduct implements BaseEntity<StoreProductKey> {
+public class StoreProduct extends BaseEntity<StoreProductKey> {
 
     @EmbeddedId
     private StoreProductKey id;

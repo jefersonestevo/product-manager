@@ -1,5 +1,7 @@
 package br.com.manager.model.entity;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -50,5 +52,10 @@ public class StoreProductKey implements Serializable {
         int result = store != null ? store.hashCode() : 0;
         result = 31 * result + (product != null ? product.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }
