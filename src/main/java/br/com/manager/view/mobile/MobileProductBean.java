@@ -5,10 +5,12 @@ import br.com.manager.services.IProductService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Named("mobileProductBean")
-public class MobileProductBean {
+public class MobileProductBean implements Serializable {
 
     private List<Product> productList;
 

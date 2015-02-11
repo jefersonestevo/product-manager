@@ -12,12 +12,14 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Logged
 @Named("template_jpa")
-public class DatabaseTemplateJPA {
+public class DatabaseTemplateJPA implements Serializable {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:form id="form-header">
+        <p:menubar id="menuPrincipal">
+            <p:menuitem value="#{message.Home}" icon="ui-icon-home"
+                        action="/pages/web/index.xhtml" immediate="true"/>
+            <p:menuitem value="#{message.Store}" icon="ui-icon-home"
+                        action="/pages/web/store/search.xhtml" immediate="true"/>
+            <p:menuitem value="#{message.Product}" icon="ui-icon-gear"
+                        action="#{productBean.goToSearchPage}" immediate="true"/>
+        </p:menubar>
+    </h:form>
+</ui:composition>
