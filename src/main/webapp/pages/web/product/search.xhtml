@@ -2,10 +2,54 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="/pages/web/template/template.xhtml">
 
     <ui:define name="content">
-        <h:outputLabel>Product Search Page</h:outputLabel>
+        <h:form id="product-form">
+            <p:fieldset legend="#{message.Filter}" styleClass="width-full" toggleable="true">
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="#{message.Product_Name}" for="productName"/>
+                    <p:inputText id="productName" value="#{productBean.filter.name}"/>
+                    <p:message for="productName"/>
+                </p:panelGrid>
+            </p:fieldset>
+
+            <p:spacer height="15px"/>
+
+            <p:outputPanel styleClass="panel-button">
+                <p:commandButton value="#{message.Search}" actionListener="#{productBean.search}" update="result"/>
+                <p:spacer width="20px"/>
+                <p:commandButton value="#{message.New}" action="#{productBean.goToInsertPage}"/>
+            </p:outputPanel>
+
+            <p:spacer height="15px"/>
+
+            <p:outputPanel id="result">
+                <p:fieldset legend="#{message.Result}" styleClass="width-full" toggleable="true"
+                            rendered="#{productBean.searched}">
+                    <p:dataTable var="product" value="#{productBean.productList}"
+                                 emptyMessage="#{message.No_Data_Found}" rows="10" paginator="true"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                        <p:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="${message.Name}"/>
+                            </f:facet>
+                            <p:outputLabel value="#{product.name}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="${message.Value}"/>
+                            </f:facet>
+                            <p:outputLabel value="#{product.value}">
+                                <f:convertNumber maxFractionDigits="2" currencyCode="R$" currencySymbol=","/>
+                            </p:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                </p:fieldset>
+            </p:outputPanel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

@@ -1,6 +1,7 @@
 package br.com.manager.view.web;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class ProductBean implements Serializable {
     private List<Product> productList = new ArrayList<>();
 
     private Product product;
+    private boolean searched = false;
 
     @Inject
     private Conversation conversation;
@@ -33,6 +35,7 @@ public class ProductBean implements Serializable {
     public void init() {
         filter = new ProductFilter();
         product = new Product();
+        searched = false;
     }
 
     public String goToSearchPage() {
@@ -43,8 +46,16 @@ public class ProductBean implements Serializable {
 
     public String search() {
         beginConversation();
+
+        // FIXME
+        Product prd = new Product();
+        prd.setName("Name_01");
+        prd.setValue(BigDecimal.valueOf(123.33));
+        productService.insert(prd);
+
         product = new Product();
         productList = productService.listAll(filter);
+        searched = Boolean.TRUE;
         return "/pages/web/product/search.xhtml";
     }
 
@@ -104,5 +115,13 @@ public class ProductBean implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public boolean isSearched() {
+        return searched;
+    }
+
+    public void setSearched(boolean searched) {
+        this.searched = searched;
     }
 }

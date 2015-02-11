@@ -1,5 +1,5 @@
 .ui-widget {
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .ui-panelgrid tr,.ui-panelgrid td,.panel-grid tr,.panel-grid td,.ui-datatable tbody td {
@@ -55,13 +55,20 @@ html {
 }
 
 #footer {
-    position: fixed;
-    bottom: 0;
-    width: 1000px;
+    min-height: 700px;
+    bottom: 15px;
+    width: 100%;
     text-align: right;
     font-size: 18pt !important;
     font-variant: small-caps;
     font-weight: bold;
+}
+
+.panel-button {
+    text-align: right;
+    margin-right: 20px;
+    width: 98%;
+    top: 20px;
 }
 
 .width-20 {
@@ -86,4 +93,8 @@ html {
 
 .width-full {
     width: 100%;
+}
+
+.align-center {
+    text-align: center;
 }
