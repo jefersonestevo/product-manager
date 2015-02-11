@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Logged {
 
-    @Nonbinding public Severity severity() default Severity.DEBUG;
+    @Nonbinding public Severity severity() default Severity.TRACE;
 
     public enum Severity {
         TRACE,

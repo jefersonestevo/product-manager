@@ -14,6 +14,8 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
+import br.com.manager.infra.utils.AnnotationUtils;
+
 @Logged
 @Interceptor
 public class LoggerInterceptor {
@@ -62,13 +64,7 @@ public class LoggerInterceptor {
     }
 
     private Logged.Severity getSeverity(InvocationContext ctx) {
-        Logged logged = ctx.getMethod().getAnnotation(Logged.class);
-        if (logged != null) {
-            return logged.severity();
-        }
-
-        logged = ctx.getTarget().getClass().getAnnotation(Logged.class);
-        return logged.severity();
+        return AnnotationUtils.findBindingAnnotation(Logged.class, ctx).severity();
     }
 
     private void log(Logged.Severity severity, Class realClass, String message) {

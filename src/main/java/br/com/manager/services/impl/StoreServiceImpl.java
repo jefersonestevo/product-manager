@@ -5,6 +5,7 @@ import br.com.manager.infra.extensions.Logged;
 import br.com.manager.model.entity.Store;
 import br.com.manager.model.filter.StoreFilter;
 import br.com.manager.services.IStoreService;
+import br.com.manager.services.Service;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -12,7 +13,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import java.util.List;
 
-@Logged
+@Service
 @Stateless
 public class StoreServiceImpl implements IStoreService {
 
