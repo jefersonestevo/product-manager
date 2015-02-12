@@ -6,11 +6,24 @@
                 template="/pages/web/template/template.xhtml">
 
     <ui:define name="content">
-        <h:outputLabel>Product Insert Page</h:outputLabel>
+        <h:form id="product-insert-form">
+            <p:fieldset legend="#{message.Product_Insert}" toggleable="true">
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="#{message.Name}" for="productName"/>
+                    <p:inputText id="productName" value="#{productBean.product.name}"/>
+                    <p:message for="productName"/>
 
-        <p:outputPanel styleClass="panel-button">
-            <p:commandButton value="#{message.Back}" action="#{productBean.search}" />
-        </p:outputPanel>
+                    <p:outputLabel value="#{message.Value}" for="productValue"/>
+                    <p:inputText id="productValue" value="#{productBean.product.value}" />
+                    <p:message for="productValue"/>
+                </p:panelGrid>
+            </p:fieldset>
+            <p:spacer height="15px"/>
+            <p:outputPanel styleClass="panel-button">
+                <p:commandButton value="#{message.Save}" action="#{productBean.insert}"/>
+                <p:commandButton value="#{message.Back}" action="#{productBean.search}" immediate="true"/>
+            </p:outputPanel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

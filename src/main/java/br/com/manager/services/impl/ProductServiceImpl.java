@@ -34,6 +34,11 @@ public class ProductServiceImpl implements IProductService {
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void update(Product product) {
-        // TODO
+        productRepository.update(product);
+    }
+
+    @Override
+    public Product findById(Long id) {
+        return productRepository.find(id);
     }
 }

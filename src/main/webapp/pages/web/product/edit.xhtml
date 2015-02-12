@@ -2,10 +2,28 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="/pages/web/template/template.xhtml">
 
     <ui:define name="content">
-        <h:outputLabel>Product Edit Page</h:outputLabel>
+        <h:form id="product-edit-form">
+            <p:fieldset legend="#{message.Product_Edit}" toggleable="true">
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="#{message.Name}" for="productName"/>
+                    <p:inputText id="productName" value="#{productBean.product.name}"/>
+                    <p:message for="productName"/>
+
+                    <p:outputLabel value="#{message.Value}" for="productValue"/>
+                    <p:inputText id="productValue" value="#{productBean.product.value}" />
+                    <p:message for="productValue"/>
+                </p:panelGrid>
+            </p:fieldset>
+            <p:spacer height="15px"/>
+            <p:outputPanel styleClass="panel-button">
+                <p:commandButton value="#{message.Save}" action="#{productBean.edit}"/>
+                <p:commandButton value="#{message.Back}" action="#{productBean.search}" immediate="true"/>
+            </p:outputPanel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

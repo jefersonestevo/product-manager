@@ -14,11 +14,11 @@ public class Product extends BaseEntity<Long> {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_product")
     private Long id;
 
-    @NotNull
-    @Size(min = 1, max = 200)
+    @NotNull(message = "{product.name.NotNull.message}")
+    @Size(min = 1, max = 200, message = "{product.name.Size.message}")
     private String name;
 
-    @Digits(integer = 15, fraction = 2)
+    @Digits(integer = 15, fraction = 2, message = "{product.value.Digits.message}")
     private BigDecimal value;
 
     public Long getId() {

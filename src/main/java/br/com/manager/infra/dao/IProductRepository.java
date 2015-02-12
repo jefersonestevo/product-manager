@@ -10,6 +10,10 @@ public interface IProductRepository extends Serializable {
 
     public void insert(Product product);
 
+    public Product update(Product product);
+
     public List<Product> listAll(ProductFilter productFilter);
+
+    public Product find(Long id);
 
 }

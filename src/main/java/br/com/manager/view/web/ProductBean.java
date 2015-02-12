@@ -45,14 +45,6 @@ public class ProductBean implements Serializable {
     }
 
     public String search() {
-        beginConversation();
-
-        // FIXME
-        Product prd = new Product();
-        prd.setName("Name_01");
-        prd.setValue(BigDecimal.valueOf(123.33));
-        productService.insert(prd);
-
         product = new Product();
         productList = productService.listAll(filter);
         searched = Boolean.TRUE;
@@ -71,9 +63,9 @@ public class ProductBean implements Serializable {
         return search();
     }
 
-    public String goToEditPage() {
+    public String goToEditPage(Long id) {
         beginConversation();
-
+        product = productService.findById(id);
         return "/pages/web/product/edit.xhtml";
     }
 

@@ -14,4 +14,6 @@ public interface IProductService extends Serializable {
 
     public void update(Product product);
 
+    public Product findById(Long id);
+
 }
