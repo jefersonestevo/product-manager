@@ -6,10 +6,10 @@
     <h:form id="form-header">
         <p:menubar id="menuPrincipal">
             <p:menuitem value="#{message.Home}" icon="ui-icon-home"
-                        action="/pages/web/index.xhtml" immediate="true"
+                        action="/pages/web/index.xhtml?faces-redirect=true" immediate="true"
                         ajax="false"/>
             <p:menuitem value="#{message.Store}" icon="ui-icon-home"
-                        action="/pages/web/store/search.xhtml" immediate="true"
+                        action="/pages/web/store/search.xhtml?faces-redirect=true" immediate="true"
                         ajax="false"/>
             <p:menuitem value="#{message.Product}" icon="ui-icon-gear"
                         action="#{productBean.goToSearchPage}" immediate="true"

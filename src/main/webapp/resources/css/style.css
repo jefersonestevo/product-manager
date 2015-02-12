@@ -6,8 +6,8 @@
     border: none !important;
 }
 
-.ui-datatable-empty-message {
-    text-align: center;
+.ui-datatabe, .ui-datatable-empty-message {
+    text-align: center !important;
 }
 
 body {

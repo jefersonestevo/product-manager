@@ -1,32 +1,26 @@
 package br.com.manager.view.web;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import br.com.manager.model.entity.Product;
 import br.com.manager.model.filter.ProductFilter;
 import br.com.manager.services.IProductService;
+import br.com.manager.view.BaseBean;
 
-@ConversationScoped
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
+
+@SessionScoped
 @Named("productBean")
-public class ProductBean implements Serializable {
+public class ProductBean extends BaseBean {
 
     private ProductFilter filter;
     private List<Product> productList = new ArrayList<>();
 
     private Product product;
     private boolean searched = false;
-
-    @Inject
-    private Conversation conversation;
 
     @Inject
     private IProductService productService;
@@ -40,8 +34,7 @@ public class ProductBean implements Serializable {
 
     public String goToSearchPage() {
         init();
-        endConversation();
-        return "/pages/web/product/search.xhtml";
+        return "/pages/web/product/search.xhtml?faces-redirect=true";
     }
 
     public String search() {
@@ -52,7 +45,6 @@ public class ProductBean implements Serializable {
     }
 
     public String goToInsertPage() {
-        beginConversation();
         product = new Product();
 
         return "/pages/web/product/insert.xhtml";
@@ -60,29 +52,18 @@ public class ProductBean implements Serializable {
 
     public String insert() {
         productService.insert(product);
+        addInfoMessage(getMessage("Product.Insert.Success"));
         return search();
     }
 
     public String goToEditPage(Long id) {
-        beginConversation();
         product = productService.findById(id);
         return "/pages/web/product/edit.xhtml";
     }
 
     public void edit() {
         productService.update(product);
-    }
-
-    private void beginConversation() {
-        if (conversation.isTransient()) {
-            conversation.begin();
-        }
-    }
-
-    private void endConversation() {
-        if (!conversation.isTransient()) {
-            conversation.end();
-        }
+        addInfoMessage(getMessage("Product.Edit.Success"));
     }
 
     public ProductFilter getFilter() {

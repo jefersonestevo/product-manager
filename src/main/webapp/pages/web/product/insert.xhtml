@@ -20,7 +20,9 @@
             </p:fieldset>
             <p:spacer height="15px"/>
             <p:outputPanel styleClass="panel-button">
-                <p:commandButton value="#{message.Save}" action="#{productBean.insert}"/>
+                <p:commandButton value="#{message.Save}" action="#{productBean.insert}"
+                        onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+                <p:spacer width="20px"/>
                 <p:commandButton value="#{message.Back}" action="#{productBean.search}" immediate="true"/>
             </p:outputPanel>
         </h:form>
